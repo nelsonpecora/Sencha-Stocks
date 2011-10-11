@@ -1,11 +1,15 @@
-new Ext.Application({
+Ext.regApplication({
+	name: 'App',
+	icon: 'icon.png',
+	defaultUrl: 'Home/index',
     launch: function() {
-        new Ext.Panel({
+    	this.viewport = new App.views.Viewport();
+        /*new Ext.Panel({
             fullscreen: true,
-            dockedItems: [{xtype:'toolbar', title:'My First App'}],
+            dockedItems: [{xtype:'toolbar', title:'Web Stocks'}],
             layout: 'fit',
             styleHtmlContent: true,
-            html: '<h2>Hello World!</h2>I did it!'
-        });
+            html: ''
+        });*/
     }
 });
