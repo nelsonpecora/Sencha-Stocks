@@ -14,11 +14,11 @@ Ext.regController('Home', {
          	
             this.application.viewport.setActiveItem(this.indexView, options.animation);
     },
-    about: function() {
-        if ( ! this.aboutView)
+    stockList: function() {
+        if ( ! this.stockListView)
         {
-            this.aboutView = this.render({
-                xtype: 'HomeAbout',
+            this.stockListView = this.render({
+                xtype: 'HomeStockList',
             });
         }
      	
@@ -37,6 +37,6 @@ Ext.regController('Home', {
      	    });
      	});
      	
-        this.application.viewport.setActiveItem(this.aboutView);
+        this.application.viewport.setActiveItem(this.stockListView);
     },
 });

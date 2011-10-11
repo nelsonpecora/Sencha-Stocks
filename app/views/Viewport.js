@@ -4,6 +4,7 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
     cardSwitchAnimation: 'slide',
     dockedItems: [
         {
+        	dock: 'bottom',
             xtype: 'toolbar',
             title: 'Web Stocks',
             items: [
@@ -14,10 +15,22 @@ App.views.Viewport = Ext.extend(Ext.Panel, {
                 },
                 {xtype: 'spacer'},
                 {
-                    itemId: 'searchBtn',
-                    iconCls: 'search',
+                    itemId: 'infoBtn',
+                    iconCls: 'info',
                     iconMask: true,
                     ui: 'action',
+                    handler: function() {
+                    	Ext.dispatch({
+                    	        controller: 'Home',
+                    	        action: 'stockList',
+                    	        historyUrl: 'Home/stockList',
+                    	        animation: {
+                    	            type: 'flip',
+                    	            direction: 'right',
+                    	            duration: 400
+                    	        },
+                    	});
+                    }
                 },
             ],
     	},

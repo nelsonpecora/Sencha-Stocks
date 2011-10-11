@@ -34,8 +34,17 @@ Ext.regApplication({
     	
     	this.viewport = new App.views.Viewport();
     	
-    	this.viewport.query('#searchBtn')[0].setHandler(function(){
-    	        Ext.ControllerManager.get('Search').index();
-    	    });
+    	/*this.viewport.query('#infoBtn')[0].setHandler(function(){
+    	        Ext.dispatch({
+    	                controller: 'Home',
+    	                action: 'stockList',
+    	                historyUrl: 'Home/stockList',
+    	                animation: {
+    	                    type: 'flip',
+    	                    direction: 'right'
+    	                },
+    	        });
+    	        
+    	    });*/
     }
 });

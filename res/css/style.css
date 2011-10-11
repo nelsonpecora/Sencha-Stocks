@@ -8,8 +8,8 @@ a.menu-item {
     text-decoration: none;
     text-transform: uppercase;
     border-radius: 10px;
-    box-shadow: 1px 1px 4px #768395;
-    background: -webkit-linear-gradient(top, #fff, #ddd);
+    -webkit-box-shadow: 1px 1px 4px #768395;
+    background-image: -webkit-linear-gradient(top, #fff, #ddd);
 }
 
 .search-panel {
