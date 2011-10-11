@@ -1,15 +1,13 @@
 Ext.regApplication({
 	name: 'App',
-	icon: 'icon.png',
+	icon: 'res/images/icon.png',
+	phoneStartupScreen: 'res/images/loading_iphone.png',
 	defaultUrl: 'Home/index',
     launch: function() {
     	this.viewport = new App.views.Viewport();
-        /*new Ext.Panel({
-            fullscreen: true,
-            dockedItems: [{xtype:'toolbar', title:'Web Stocks'}],
-            layout: 'fit',
-            styleHtmlContent: true,
-            html: ''
-        });*/
+    	
+    	this.viewport.query('#searchBtn')[0].setHandler(function(){
+    	        Ext.ControllerManager.get('Search').index();
+    	    });
     }
 });
