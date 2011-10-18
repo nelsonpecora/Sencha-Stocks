@@ -1,0 +1,21 @@
+http://finance.yahoo.com/d/quotes.csv?s=[SYMBOL]&f=snl1c1p2j1ohgva2rkjy
+
+SYMBOL can be singular or plural (eg: AAPL+T+GOOG)
+
+s	=	symbol
+n	=	name
+l1	=	last trade price
+c1	=	change (price)
+p2	=	change (percentage)
+j1	=	market cap
+o	=	open price
+h	=	daily high
+g	=	daily low
+v	=	volume
+a2	=	average volume
+r	=	P/E ratio
+k	=	52 week high
+j	=	52 week low
+y	=	yield
+
+!! WARNING: name field only spits out 16 characters!!
