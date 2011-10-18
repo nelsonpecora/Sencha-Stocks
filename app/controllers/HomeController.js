@@ -9,6 +9,14 @@ Ext.regController('Home', {
 		}
 		
 		//put show/hide stuff here
+		
+		if (Ext.orientation == "landscape") {
+			Ext.dispatch({
+				controller: 'Home',
+				action: 'landscape',
+				historyUrl: 'Home/landscape',
+			});
+		}
 				
 		this.application.viewport.setActiveItem(this.indexView, options.animation);
 	},
@@ -48,6 +56,14 @@ Ext.regController('Home', {
 		}
 		
 		//put show/hide stuff here
+		
+		if (Ext.orientation == "portrait") {
+			Ext.dispatch({
+				controller: 'Home',
+				action: 'index',
+				historyUrl: 'Home/index',
+			});
+		}
 		
 		this.application.viewport.setActiveItem(this.landscapeView, options.animation);
 	}

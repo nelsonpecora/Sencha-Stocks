@@ -8,7 +8,6 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			xtype: 'toolbar',
 			dock: 'bottom',
 			title: 'Web Stocks',
-			id: 'bbar',
 			items: [
 				{ xtype: 'spacer' },
 				{

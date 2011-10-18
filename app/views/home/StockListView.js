@@ -8,7 +8,6 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 			xtype: 'toolbar',
 			dock: 'top',
 			title: 'Stocks',
-			id: 'tbar',
 			items: [
 				{
 					itemId: 'addBtn',
@@ -47,6 +46,41 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 						});
 					}
 				}
+			]
+		},
+		{
+			xtype: 'toolbar',
+			dock: 'bottom',
+			ui: 'light',
+			items: [
+				{ xtype: 'spacer' },
+				{
+					itemId: 'bButtons',
+					xtype: 'segmentedbutton',
+					allowDepress: true,
+					items: [
+						{
+							text: '%',
+							handler: function() {
+								App.controllers.Home.toggleMe('percent');
+								//make a method in controller to change a global "this is toggled' variable when either these buttons are changed or the relevant button on the home screen is tapped.
+							},
+							width: '100px',
+							pressed: true
+						},
+						{
+							text: 'Price',
+							width: '100px',
+							handler: null
+						},
+						{
+							text: 'Mkt Cap',
+							width: '100px',
+							handler: null
+						}
+					]
+				},
+				{ xtype: 'spacer' }
 			]
 		}
 	]
