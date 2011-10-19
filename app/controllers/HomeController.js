@@ -66,7 +66,9 @@ Ext.regController('Home', {
 		}
 		
 		this.application.viewport.setActiveItem(this.landscapeView, options.animation);
-	}
+	},
+	
+	stockBtn: function(){return "12";}
 	
 });
 

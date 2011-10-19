@@ -2,7 +2,6 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 	scroll: 'vertical',
 	styleHtmlContent: true,
 	style: 'background: #d8e2ef',
-	html: '<h1 style="text-align:center">STOCK LIST</h1>',
 	dockedItems: [
 		{
 			xtype: 'toolbar',
@@ -22,7 +21,8 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 							animation: {
 								type: 'slide',
 								duration: 400,
-								direction: 'up'
+								direction: 'up',
+								cover: true
 							}
 						});
 					}
@@ -83,7 +83,17 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 				{ xtype: 'spacer' }
 			]
 		}
-	]
+	],
+	items: [{
+		xtype: 'list',
+		id : 'stockPickList',
+	    emptyText   : 'No data available.',
+	    store: App.stores.stockStore,
+	    itemSelector: 'div.stockListItem',
+	    tpl: '<div class="stockListItem"><strong>{symbol}</strong><br /><span style="font-size:80%">{name}</span></div>',
+	    itemTpl: '<div class="stockListItem"><strong>{symbol}</strong><br /><span style="font-size:80%">{name}</span></div>',
+	    fullscreen: true
+	}]
 });
 
 Ext.reg('StockList', App.views.StockList);

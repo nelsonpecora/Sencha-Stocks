@@ -1,8 +1,7 @@
 App.views.Index = Ext.extend(Ext.Panel, {
 	scroll: 'vertical',
 	styleHtmlContent: true,
-	style: 'background: #d8e2ef',
-	html: '<h1 style="text-align:center">Hello World!</h1>',
+	style: 'background: black',
 	dockedItems: [
 		{
 			xtype: 'toolbar',
@@ -29,6 +28,18 @@ App.views.Index = Ext.extend(Ext.Panel, {
 					}
 				}
 			]
+		}
+	],
+	items: [
+		{
+			xtype: 'list',
+			id : 'stockList',
+		    emptyText   : 'No data available.',
+		    store: App.stores.stockStore,
+		    itemSelector: 'div.stockItem',
+		    tpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
+		    itemTpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
+		    height: 300
 		}
 	]
 });

@@ -2,7 +2,6 @@ App.views.Search = Ext.extend(Ext.Panel, {
 	scroll: 'vertical',
 	styleHtmlContent: true,
 	style: 'background: #d8e2ef',
-	floating: true,
 	dockedItems: [
 		{
 			xtype: 'toolbar',
@@ -24,7 +23,8 @@ App.views.Search = Ext.extend(Ext.Panel, {
 							animation: {
 								type: 'slide',
 								duration: 400,
-								direction: 'down'
+								direction: 'down',
+								reveal: true
 							}
 						});
 					}
@@ -32,7 +32,15 @@ App.views.Search = Ext.extend(Ext.Panel, {
 			]
 		}
 	],
-	html: '<h1 style="text-align:center">SEARCH VIEW</h1>'
+	items: [{
+		xtype: 'list',
+		id : 'stockSearchList',
+	    store: App.stores.watchList,
+	    itemSelector: 'div.stockListItem',
+	    tpl: '<div class="stockListItem"><strong>{symbol}</strong><br /><span style="font-size:80%">{name}</span></div>',
+	    itemTpl: '<div class="stockListItem"><strong>{symbol}</strong><br /><span style="font-size:80%">{name}</span></div>',
+	    fullscreen: true
+	}]
 });
 
 Ext.reg('Search', App.views.Search);

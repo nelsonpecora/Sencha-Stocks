@@ -1,1 +1,9 @@
 /* this is the user stylesheet for Web Stocks */
+.stockList {
+	-webkit-border-radius: 5px;
+	background: url('../images/pinstripe.png') repeat-x !important;
+}
+
+.stockItem {
+	background: url('../images/pinstripe.png') repeat-x !important;
+}

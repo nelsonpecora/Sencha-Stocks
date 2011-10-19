@@ -29,3 +29,11 @@ App.stores.stockStore = new Ext.data.Store({
     },
     autoLoad: true
 });
+
+App.stores.watchList = new Ext.data.Store({
+    model: 'StockData',
+    proxy: {
+        type: 'sessionstorage',
+        id  : 'watchList'
+    }
+});
