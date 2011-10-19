@@ -1,7 +1,6 @@
 App.views.Index = Ext.extend(Ext.Panel, {
-	scroll: 'vertical',
-	styleHtmlContent: true,
-	style: 'background: black',
+	style: 'background: black; padding: 0px;',
+	layout: 'vbox',
 	dockedItems: [
 		{
 			xtype: 'toolbar',
@@ -30,16 +29,59 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			]
 		}
 	],
+	listeners: {
+		selectStock: function(record) {
+			/*App.stores.activeList.load(function(record) {
+			    console.log('loaded records');
+			}); */
+			//console.log(App.stores.activeList);
+			console.log(App.stores.stockStore);
+		}
+	},
 	items: [
 		{
 			xtype: 'list',
 			id : 'stockList',
-		    emptyText   : 'No data available.',
+			flex: 2.5,
+			width: '100%',
+			emptyText: 'No data available.',
 		    store: App.stores.stockStore,
 		    itemSelector: 'div.stockItem',
 		    tpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
 		    itemTpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
-		    height: 300
+		    onItemTap: function(item, index) {
+		    	var record = App.stores.stockStore.getAt(index).data;
+		    	this.ownerCt.fireEvent("selectStock",record);
+		    }
+		},
+		{
+			xtype: 'carousel',
+			id: 'mainBot',
+			flex: 1.5,
+			width: '100%',
+			style: 'background: blue;',
+			indicator: true,
+			items: [
+				{
+					/*
+					id: 'stockInfo',
+					items: [new Ext.DataView({
+					        store: App.stores.activeList,
+					        itemSelector: 'div.stockInfo',
+					        tpl: '<div class="stockInfo"><h1 style="text-align: center">{name}</h1><div class="stockInfoLeft>Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div>'
+					})] */
+					id: 'stockInfo',
+					html:'<h2>Stock Info</h2>'
+				},
+				{
+					id: 'stockGraph',
+					html: '<h2>Stock Graph</h2>'
+				},
+				{
+					id: 'stockNews',
+					html: '<h2>Stock News</h2>'
+				}
+			]
 		}
 	]
 });

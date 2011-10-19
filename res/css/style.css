@@ -1,9 +1,48 @@
 /* this is the user stylesheet for Web Stocks */
 .stockList {
-	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px !important;
 	background: url('../images/pinstripe.png') repeat-x !important;
 }
 
 .stockItem {
 	background: url('../images/pinstripe.png') repeat-x !important;
+	height: 1.6em;
+}
+
+.stockItemName {
+	position: absolute;
+	left: 0;
+	padding-left: 1em;
+	font-weight: bolder;
+	font-size: 22px;
+}
+
+.stockItemPrice {
+	position: absolute;
+	right: 5em;
+	font-weight: bolder;
+	font-size: 22px;
+}
+
+.stockItemBtn {
+	position: absolute;
+	right: 0px;
+	width: 3.4em;
+	-webkit-border-radius: 5px;
+	border: 2px solid darkgrey;
+	margin-right: 1em;
+	text-align: center;
+	font-weight: bold;
+	margin-top: -2px;
+	height: 1.5em;
+	font-size: 22px;
+}
+
+#stockInfo, #stockGraph, #stockNews {
+	text-align: center;
+	padding-top: 3em;
+}
+
+.stockItem.x-item-selected {
+	background: grey !important;
 }
