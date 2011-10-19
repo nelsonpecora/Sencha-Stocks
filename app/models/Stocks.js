@@ -31,7 +31,7 @@ App.stores.stockStore = new Ext.data.Store({
     model: 'App.models.StockData',
     proxy: {
         type: 'ajax',
-        url : '/app/models/data.json',
+        url : 'app/models/data.json',
         reader: {
             type: 'json'
         }
@@ -43,7 +43,7 @@ App.stores.rssStore = new Ext.data.Store({
 	model: 'App.models.RssData',
 	proxy: {
 		type: 'ajax',
-		url: '/app/models/rss.json',
+		url: 'app/models/rss.json',
 		reader: {
 			type: 'json'
 		}
