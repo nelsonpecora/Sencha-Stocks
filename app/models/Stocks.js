@@ -18,6 +18,15 @@ App.models.StockData = Ext.regModel('App.models.StockData', {
     ]
 });
 
+App.models.RssData = Ext.regModel('App.models.RssData', {
+	fields: [
+		'title',
+		'source',
+		'date', //format: mm/dd/yy
+		'time' //format: 13:05
+	]
+});
+
 App.stores.stockStore = new Ext.data.Store({
     model: 'App.models.StockData',
     proxy: {
@@ -28,6 +37,18 @@ App.stores.stockStore = new Ext.data.Store({
         }
     },
     autoLoad: true
+});
+
+App.stores.rssStore = new Ext.data.Store({
+	model: 'App.models.RssData',
+	proxy: {
+		type: 'ajax',
+		url: '/app/models/rss.json',
+		reader: {
+			type: 'json'
+		}
+	},
+	autoLoad: true
 });
 
 App.stores.watchList = new Ext.data.Store({

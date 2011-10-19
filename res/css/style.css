@@ -43,6 +43,19 @@
 	padding-top: 3em;
 }
 
+#stockInfo {
+	color: whitesmoke;
+}
+
+#stockNews {
+	padding: 0;
+}
+
 .stockItem.x-item-selected {
 	background: grey !important;
+}
+
+.stockNewsItem {
+	text-align: left;
+	font-size: 70%;
 }

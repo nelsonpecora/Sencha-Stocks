@@ -59,7 +59,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			id: 'mainBot',
 			flex: 1.5,
 			width: '100%',
-			style: 'background: blue;',
+			style: 'background: black;',
 			indicator: true,
 			items: [
 				{
@@ -75,11 +75,18 @@ App.views.Index = Ext.extend(Ext.Panel, {
 				},
 				{
 					id: 'stockGraph',
-					html: '<h2>Stock Graph</h2>'
+					//html: '<h2>Stock Graph</h2>'
+					html: '<img style="margin-top:-54px;padding:0;" src="/res/images/stockbottom.png" width="100%" height="156" />'
 				},
 				{
 					id: 'stockNews',
-					html: '<h2>Stock News</h2>'
+					xtype: 'list',
+					fullscreen: true,
+					//style: 'margin-top:-54px;height:156px;',
+					store: App.stores.rssStore,
+					itemSelector: 'div.stockNewsItem',
+					tpl: '<div class="stockNewsItem"><strong>{title}</strong><br /><span style="font-size:80%;color:grey;">{source} &ndash; {date} at {time}</span></div>',
+					itemTpl: '<div class="stockNewsItem"><strong>{title}</strong><br /><span style="font-size:80%;color:grey;">{source} &ndash; {date} at {time}</span></div>'
 				}
 			]
 		}
