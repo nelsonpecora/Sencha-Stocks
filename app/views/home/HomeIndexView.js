@@ -76,7 +76,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 				{
 					id: 'stockGraph',
 					//html: '<h2>Stock Graph</h2>'
-					html: '<img style="margin-top:-54px;padding:0;" src="../../../res/images/stockbottom.png" width="100%" height="156" />'
+					html: '<img style="margin-top:-54px;padding:0;" src="res/images/stockbottom.png" width="100%" height="156" />'
 				},
 				{
 					id: 'stockNews',
