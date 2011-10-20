@@ -38,13 +38,35 @@
 	font-size: 22px;
 }
 
-#stockInfo, #stockGraph, #stockNews {
-	text-align: center;
-	padding-top: 3em;
+#stockInfo {
+	color: black;
+	background: whitesmoke;
 }
 
-#stockInfo {
-	color: whitesmoke;
+.stockInfoLeft {
+	position: absolute;
+	top: 20px;
+	left: 0px;
+	color: black;
+	margin-left: 30px;
+}
+
+h1 {
+	color: black;
+	text-align: center;
+}
+
+.stockInfoItem {
+	color: black;
+}
+
+.stockInfoRight {
+	position: absolute;
+	top: 20px;
+	right: 0px;
+	color: black;
+	margin-right: 30px;
+	width: 130px;
 }
 
 #stockNews {

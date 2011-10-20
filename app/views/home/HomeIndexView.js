@@ -31,11 +31,14 @@ App.views.Index = Ext.extend(Ext.Panel, {
 	],
 	listeners: {
 		selectStock: function(record) {
-			/*App.stores.activeList.load(function(record) {
-			    console.log('loaded records');
-			}); */
-			//console.log(App.stores.activeList);
-			console.log(App.stores.stockStore);
+			App.stores.activeStock.clearFilter();
+			App.stores.activeStock.filter({
+			    property: 'symbol',
+			    value: record,
+			    exactMatch: true
+			});
+			console.log(record,App.stores.activeStock.data.items[0].data.name);
+			console.log(App.stores.stockStore, App.stores.activeStock);
 		}
 	},
 	items: [
@@ -50,7 +53,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 		    tpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
 		    itemTpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
 		    onItemTap: function(item, index) {
-		    	var record = App.stores.stockStore.getAt(index).data;
+		    	var record = App.stores.stockStore.getAt(index).data.symbol;
 		    	this.ownerCt.fireEvent("selectStock",record);
 		    }
 		},
@@ -63,20 +66,27 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			indicator: true,
 			items: [
 				{
-					/*
 					id: 'stockInfo',
-					items: [new Ext.DataView({
-					        store: App.stores.activeList,
-					        itemSelector: 'div.stockInfo',
-					        tpl: '<div class="stockInfo"><h1 style="text-align: center">{name}</h1><div class="stockInfoLeft>Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div>'
-					})] */
-					id: 'stockInfo',
-					html:'<h2>Stock Info</h2>'
+					xtype: 'dataview',
+			        store: function(){if(App.stores.activeStock){console.log("it works");return App.stores.activeStock;} else {alert("Yikes!");return null;}}(),
+			        itemSelector: 'div.stockInfoItem',
+			        emptyText: 'No data loaded!',
+			        tpl: '<tpl for "."><h1>{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></tpl>',
+					listeners: {
+						afterrender: function() {
+							App.stores.activeStock.filter({
+							    property: 'symbol',
+							    value: 'SMPL',
+							    exactMatch: true
+							});
+							
+							console.log('current stock: ', App.stores.activeStock.data.items[0].data.name);
+						}
+					}
 				},
 				{
 					id: 'stockGraph',
-					//html: '<h2>Stock Graph</h2>'
-					html: '<img style="margin-top:-54px;padding:0;" src="res/images/stockbottom.png" width="100%" height="156" />'
+					html: '<img src="res/images/stockbottom.png" width="100%" height="156" />'
 				},
 				{
 					id: 'stockNews',
