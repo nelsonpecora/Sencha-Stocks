@@ -69,6 +69,9 @@ App.views.Index = Ext.extend(Ext.Panel, {
 					id: 'stockInfo',
 					xtype: 'dataview',
 			        store: function(){if(App.stores.activeStock){console.log("it works");return App.stores.activeStock;} else {alert("Yikes!");return null;}}(),
+			        /* if this keeps working fine, get rid of all the conditional stuff and replace it with:
+			        
+			        store: App.stores.activeStock, */
 			        itemSelector: 'div.stockInfoItem',
 			        emptyText: 'No data loaded!',
 			        tpl: '<tpl for "."><h1>{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></tpl>',
@@ -79,7 +82,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 							    value: 'SMPL',
 							    exactMatch: true
 							});
-							
+							//maybe check if the dataview is updating here?
 							console.log('current stock: ', App.stores.activeStock.data.items[0].data.name);
 						}
 					}
