@@ -82,6 +82,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 							    value: 'SMPL',
 							    exactMatch: true
 							});
+							console.log(this);
 							//maybe check if the dataview is updating here?
 							console.log('current stock: ', App.stores.activeStock.data.items[0].data.name);
 						}
