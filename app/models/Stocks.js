@@ -33,7 +33,8 @@ App.stores.stockStore = new Ext.data.Store({
         type: 'ajax',
         url : 'app/models/data.json',
         reader: {
-            type: 'json'
+            type: 'json',
+            root: 'stocks'
         }
     },
     autoLoad: true
@@ -57,7 +58,8 @@ App.stores.activeStock = new Ext.data.Store({
         type: 'ajax',
         url : 'app/models/data.json',
         reader: {
-            type: 'json'
+            type: 'json',
+            root: 'stocks'
         }
     },
     autoLoad: true
