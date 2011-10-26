@@ -50,8 +50,8 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			emptyText: 'No data available.',
 		    store: App.stores.stockStore,
 		    itemSelector: 'div.stockItem',
-		    tpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
-		    itemTpl: '<div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div>',
+		    tpl: '<tpl for="."><div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div></tpl>',
+		    itemTpl: '<tpl for="."><div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div></tpl>',
 		    onItemTap: function(item, index) {
 		    	var record = App.stores.stockStore.getAt(index).data.symbol;
 		    	this.ownerCt.fireEvent("selectStock",record);

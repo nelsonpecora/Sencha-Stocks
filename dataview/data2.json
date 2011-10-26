@@ -1,0 +1,16 @@
+{
+	"images": [
+		{
+			"name": "img1",
+			"url": "url.com",
+			"size": 23,
+			"lastmod": null
+		},
+		{
+			"name": "img2",
+			"url": "url.com/ok",
+			"size": 21,
+			"lastmod": null
+		}
+	]
+}
