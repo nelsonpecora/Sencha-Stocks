@@ -56,7 +56,7 @@ h1 {
 	text-align: center;
 }
 
-.stockInfoItem {
+#stockInfo {
 	color: black;
 	font-size: 0.8em;
 }
