@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Everything Sucks",
+		"title": "Economic Downturn Everywhere",
 		"source": "Wall Street Journal",
 		"date": "2/14/11",
 		"time": "14:05"
@@ -12,7 +12,7 @@
 		"time": "18:23"
 	},
 	{
-		"title": "We Hate Liberals",
+		"title": "Candidates Say Crazy Things",
 		"source": "Wall Street Journal",
 		"date": "4/18/11",
 		"time": "9:32"
@@ -28,5 +28,17 @@
 		"source": "Slashdot",
 		"date": "5/11/11",
 		"time": "15:37"
+	},
+	{
+		"title": "Cats, Now With Captions",
+		"source": "Reddit",
+		"date": "6/14/11",
+		"time": "11:30"
+	},
+	{
+		"title": "Market Update: Sell Everything Now",
+		"source": "Washington Post",
+		"date": "7/20/11",
+		"time": "9:05"
 	}
 ]

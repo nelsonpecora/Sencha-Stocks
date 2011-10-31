@@ -58,6 +58,11 @@ h1 {
 
 .stockInfoItem {
 	color: black;
+	font-size: 80%;
+}
+
+.stockInfoItem h1 {
+	font-weight: bold;
 }
 
 .stockInfoRight {
@@ -65,8 +70,8 @@ h1 {
 	top: 20px;
 	right: 0px;
 	color: black;
-	margin-right: 30px;
-	width: 130px;
+	margin-right: 0px;
+	width: 160px;
 }
 
 #stockNews {

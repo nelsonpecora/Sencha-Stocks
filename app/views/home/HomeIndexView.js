@@ -31,14 +31,15 @@ App.views.Index = Ext.extend(Ext.Panel, {
 	],
 	listeners: {
 		selectStock: function(record) {
+			//console.log(record.data);
+			App.stores.chartData.loadData(generateData());
 			App.stores.activeStock.clearFilter();
+			var id = record.data.id;
 			App.stores.activeStock.filter({
-			    property: 'symbol',
-			    value: record,
-			    exactMatch: true
+				property: "id",
+				value: id,
+				exactMatch: true
 			});
-			console.log(record,App.stores.activeStock.data.items[0].data.name);
-			console.log(App.stores.stockStore, App.stores.activeStock);
 		}
 	},
 	items: [
@@ -50,10 +51,10 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			emptyText: 'No data available.',
 		    store: App.stores.stockStore,
 		    itemSelector: 'div.stockItem',
-		    tpl: '<tpl for="."><div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div></tpl>',
 		    itemTpl: '<tpl for="."><div class="stockItem"><div class="stockItemName">{symbol}</div><div class="stockItemPrice">{lastTradePrice}</div><div class="stockItemBtn">' + App.controllers.Home.stockBtn() + '</div></div></tpl>',
 		    onItemTap: function(item, index) {
-		    	var record = App.stores.stockStore.getAt(index).data.symbol;
+		    	//console.log(item,index);
+		    	var record = App.stores.stockStore.getAt(index);
 		    	this.ownerCt.fireEvent("selectStock",record);
 		    }
 		},
@@ -62,51 +63,52 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			id: 'mainBot',
 			flex: 1.5,
 			width: '100%',
-			style: 'background: black;',
+			style: 'background: black;border-top:1px solid grey;',
 			indicator: true,
 			items: [
 				{
 					id: 'stockInfo',
 					xtype: 'dataview',
 			        store: App.stores.activeStock,
-			        data: {
-			        	'stocks': [
-				        	{
-					        	"symbol": "SMPL",
-					        	"name": "Sample",
-					        	"lastTradePrice": 10,
-					        	"changePrice": 2.4,
-					        	"changePercent": "0.5%",
-					        	"marketCap": "23.4M",
-					        	"openPrice": 9.5,
-					        	"highPrice": 12,
-					        	"lowPrice": 9.3,
-					        	"volume": "25.6M",
-					        	"avgVolume": "42.3M",
-					        	"peRatio": 6.2,
-					        	"wkHigh": 15,
-					        	"wkLow": 9,
-					        	"yield": 2.3
-					        }
-				        ]
-			        },
 			        itemSelector: 'div.stockInfoItem',
-			        emptyText: 'No data loaded!',
-			        tpl: '<tpl for "."><div class="stockInfoItem"><h1 style="color: red">{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></div></tpl>',
+			        emptyText: '<div style="text-align:center;padding-top:40px;">Please pick a stock!</div>',
+			        tpl: '<tpl for="."><div class="stockInfoItem"><h1>{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></div></tpl>',
 					listeners: {
 						afterrender: function() {
 							App.stores.activeStock.filter({
-							    property: 'symbol',
-							    value: 'SMPL',
+							    property: 'id',
+							    value: '0',
 							    exactMatch: true
 							});
-							console.log(this,this.view);
 						}
 					}
 				},
 				{
 					id: 'stockGraph',
-					html: '<img src="res/images/stockbottom.png" width="100%" height="156" />'
+					xtype: 'chart',
+					style: 'background: whitesmoke;',
+					animate: true,
+				    store: App.stores.chartData,
+				    shadow: false,
+				    theme: 'Base',
+				    axes: [{
+				    	type: 'Numeric',
+				    	position: 'left',
+				    	fields: ['stockPrice']
+				    }, {
+				    	type: 'Time',
+				    	position: 'bottom',
+				    	fields: ['date'],
+				    	dateFormat: ' M d '
+				    }],
+				    series: [{
+				    	type: 'line',
+				    	showMarkers: false,
+				    	smooth: true,
+				    	axis: 'left',
+				    	xField: 'date',
+				    	yField: 'stockPrice'
+				    }]
 				},
 				{
 					id: 'stockNews',
@@ -115,7 +117,6 @@ App.views.Index = Ext.extend(Ext.Panel, {
 					//style: 'margin-top:-54px;height:156px;',
 					store: App.stores.rssStore,
 					itemSelector: 'div.stockNewsItem',
-					tpl: '<div class="stockNewsItem"><strong>{title}</strong><br /><span style="font-size:80%;color:grey;">{source} &ndash; {date} at {time}</span></div>',
 					itemTpl: '<div class="stockNewsItem"><strong>{title}</strong><br /><span style="font-size:80%;color:grey;">{source} &ndash; {date} at {time}</span></div>'
 				}
 			]

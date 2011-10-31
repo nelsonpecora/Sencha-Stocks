@@ -68,7 +68,22 @@ Ext.regController('Home', {
 		this.application.viewport.setActiveItem(this.landscapeView, options.animation);
 	},
 	
-	stockBtn: function(){return "12";}
+	stockBtn: function(){
+		return "12";
+	},
+	
+	toggleMe: function(toggle) {
+		switch(toggle) {
+			case 'percent':
+				return('percent');
+			case 'price':
+				return('price');
+			case 'mktCap':
+				return('mktCap');
+			default:
+				return('percent');
+		}
+	}
 	
 });
 

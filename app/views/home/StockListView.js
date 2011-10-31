@@ -71,12 +71,16 @@ App.views.StockList = Ext.extend(Ext.Panel, {
 						{
 							text: 'Price',
 							width: '100px',
-							handler: null
+							handler: function() {
+								App.controllers.Home.toggleMe('price');
+							}
 						},
 						{
 							text: 'Mkt Cap',
 							width: '100px',
-							handler: null
+							handler: function() {
+								App.controllers.Home.toggleMe('mktCap');
+							}
 						}
 					]
 				},
