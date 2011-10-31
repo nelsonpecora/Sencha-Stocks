@@ -58,11 +58,12 @@ h1 {
 
 .stockInfoItem {
 	color: black;
-	font-size: 70%;
+	font-size: 0.8em;
 }
 
 .stockInfoItem h1 {
 	font-weight: bold;
+	font-size: 120%;
 }
 
 .stockInfoRight {
