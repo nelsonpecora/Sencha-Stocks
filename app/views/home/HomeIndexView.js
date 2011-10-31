@@ -72,7 +72,7 @@ App.views.Index = Ext.extend(Ext.Panel, {
 			        store: App.stores.activeStock,
 			        itemSelector: 'div.stockInfoItem',
 			        emptyText: '<div style="text-align:center;padding-top:40px;">Please pick a stock!</div>',
-			        tpl: '<tpl for="."><div class="stockInfoItem" style="font-size: 0.75em;"><h1 style="font-weight: bold; font-size: 120%;">{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></div></tpl>',
+			        tpl: '<tpl for="."><div class="stockInfoItem" style="font-size: 0.78em;"><h1 style="font-weight: bold; font-size: 120%;">{name}</h1><div class="stockInfoLeft">Open: {openPrice}<br />High: {highPrice}<br />Low: {lowPrice}<br />Vol: {volume}<br />P/E: {peRatio}</div><div class="stockInfoRight">Mkt Cap: {marketCap}<br />52w High: {wkHigh}<br />52w Low: {wkLow}<br />Avg Vol: {avgVolume}<br />Yield: {yield}</div></div></tpl>',
 					listeners: {
 						afterrender: function() {
 							App.stores.activeStock.filter({
